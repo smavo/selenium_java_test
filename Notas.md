@@ -12,3 +12,6 @@ Clic en el Botón Create.
 ```
 File / Settings / Editor / Natural Lenguages  / Agregar Español
 ```
+
+### Link de pruebas: https://askomdch.com/
+- Loguearte en el sistema para las pruebas.
