@@ -22,10 +22,10 @@ public class CartPage extends BasePage {
         Thread.sleep(tiempo);
     }
 
-    public void clickCheckoutButton(Integer tiempo) throws InterruptedException{
+    public CheckoutPage clickCheckoutButton(Integer tiempo) throws InterruptedException{
         driver.findElement(checkoutButton).click();
         Thread.sleep(tiempo);
+        return new CheckoutPage(driver);
     }
-
 
 }
