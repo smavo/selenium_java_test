@@ -6,7 +6,9 @@ import org.selenium.pom.pages.StorePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TestPom01 extends BaseTest {
+import java.util.Collections;
+
+public class TestPom02 extends BaseTest {
 
     @Test
     public void demotest() throws InterruptedException{
@@ -18,6 +20,12 @@ public class TestPom01 extends BaseTest {
         StorePage storePage = homePage.clicStoreMenuLink();
 
         // Search
+        storePage.textInSearchField("Blue");
+        storePage.clickSearchBtn();
+        storePage.getTitleResult("Search results: “Blue”");
+        storePage.clickAddToCardButton();
+
+        /* Search
         driver.findElement(By.xpath("(//li/a[contains(.,'Store')])[1]")).click();
         driver.findElement(By.xpath("//input[@class='search-field']")).sendKeys("Blue");
         driver.findElement(By.xpath("//button[@value='Search']")).click();
@@ -25,7 +33,7 @@ public class TestPom01 extends BaseTest {
         Assert.assertEquals(
                   driver.findElement(By.xpath("//h1[contains(@class,'woocommerce-products-header__title page-title')]")).getText(),
                   "Search results: “Blue”"
-        );
+        ); */
 
         driver.findElement(By.xpath("//a[@href='?add-to-cart=1215'][contains(.,'Add to cart')]")).click();
         Thread.sleep(3000);

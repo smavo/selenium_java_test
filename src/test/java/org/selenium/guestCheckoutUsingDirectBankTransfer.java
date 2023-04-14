@@ -22,11 +22,10 @@ public class guestCheckoutUsingDirectBankTransfer {
         //Maximize the browser
         driver.manage().window().maximize();
 
-        // Test
+        // Search
         driver.findElement(By.xpath("(//li/a[contains(.,'Store')])[1]")).click();
         driver.findElement(By.xpath("//input[@class='search-field']")).sendKeys("Blue");
         driver.findElement(By.xpath("//button[@value='Search']")).click();
-        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
         Assert.assertEquals(
                   driver.findElement(By.xpath("//h1[contains(@class,'woocommerce-products-header__title page-title')]")).getText(),
@@ -35,16 +34,16 @@ public class guestCheckoutUsingDirectBankTransfer {
 
         driver.findElement(By.xpath("//a[@href='?add-to-cart=1215'][contains(.,'Add to cart')]")).click();
         Thread.sleep(3000);
-        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.xpath("//a[@title='View cart']")).click();
 
+        // Page Cart
         Assert.assertEquals(driver.findElement(By.xpath("//a[contains(.,'Blue Shoes')]")).getText(),
                  "Blue Shoes"
         );
         Thread.sleep(4000);
-        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
         driver.findElement(By.xpath("//a[contains(@class,'checkout-button button alt wc-forward')]")).click();
 
+        // Page Checkout
         driver.findElement(By.id("billing_first_name")).sendKeys("Test");
         driver.findElement(By.id("billing_last_name")).sendKeys("Test");
         driver.findElement(By.id("billing_company")).sendKeys("Testing ORG");
@@ -62,6 +61,8 @@ public class guestCheckoutUsingDirectBankTransfer {
         Thread.sleep(3000);
         driver.findElement(By.xpath("//input[@id='payment_method_cod']")).click();
         Thread.sleep(3000);
+
+        // Page Checkout Details
         driver.findElement(By.id("place_order")).click();
         Thread.sleep(3000);
         Assert.assertEquals(driver.findElement(By.xpath("//h1[contains(.,'Checkout')]")).getText(),
@@ -88,11 +89,10 @@ public class guestCheckoutUsingDirectBankTransfer {
         //Maximize the browser
         driver.manage().window().maximize();
 
-        // Test
+        // Search
         driver.findElement(By.xpath("(//li/a[contains(.,'Store')])[1]")).click();
         driver.findElement(By.xpath("//input[@class='search-field']")).sendKeys("Blue");
         driver.findElement(By.xpath("//button[@value='Search']")).click();
-        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
         Assert.assertEquals(
                 driver.findElement(By.xpath("//h1[contains(@class,'woocommerce-products-header__title page-title')]")).getText(),
@@ -101,14 +101,14 @@ public class guestCheckoutUsingDirectBankTransfer {
 
         driver.findElement(By.xpath("//a[@href='?add-to-cart=1215'][contains(.,'Add to cart')]")).click();
         Thread.sleep(3000);
-        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+
         driver.findElement(By.xpath("//a[@title='View cart']")).click();
 
+        // Page Cart
         Assert.assertEquals(driver.findElement(By.xpath("//a[contains(.,'Blue Shoes')]")).getText(),
                 "Blue Shoes"
         );
         Thread.sleep(4000);
-        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
         driver.findElement(By.xpath("//a[contains(@class,'checkout-button button alt wc-forward')]")).click();
 
         // Click here to login
@@ -121,7 +121,7 @@ public class guestCheckoutUsingDirectBankTransfer {
         Thread.sleep(2000);
         driver.findElement(By.xpath("//button[@name='login']")).click();
 
-        // Billing details
+        // Page Checkout
         driver.findElement(By.id("billing_first_name")).sendKeys("Test");
         driver.findElement(By.id("billing_last_name")).sendKeys("Test");
         driver.findElement(By.id("billing_company")).sendKeys("Testing ORG");
@@ -134,11 +134,12 @@ public class guestCheckoutUsingDirectBankTransfer {
         driver.findElement(By.xpath("//ul/li[@class='select2-results__option'][contains(.,'Lima')]")).click();
         driver.findElement(By.id("billing_postcode")).sendKeys("15744");
         driver.findElement(By.id("billing_phone")).sendKeys("978554490");
-        // driver.findElement(By.id("billing_email")).sendKeys("test@gmail.com");
         driver.findElement(By.id("order_comments")).sendKeys("Orden de compra de prueba");
         Thread.sleep(3000);
         driver.findElement(By.xpath("//input[@id='payment_method_cod']")).click();
         Thread.sleep(3000);
+
+        // Page Checkout Details
         driver.findElement(By.id("place_order")).click();
         Thread.sleep(3000);
         Assert.assertEquals(driver.findElement(By.xpath("//h1[contains(.,'Checkout')]")).getText(),
