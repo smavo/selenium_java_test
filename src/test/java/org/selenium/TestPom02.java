@@ -23,7 +23,7 @@ public class TestPom02 extends BaseTest {
         storePage.textInSearchField("Blue");
         storePage.clickSearchBtn();
         storePage.getTitleResult("Search results: “Blue”");
-        storePage.clickAddToCardButton();
+        storePage.clickAddToCardButton("Blue Shoes");
 
         /* Search
         driver.findElement(By.xpath("(//li/a[contains(.,'Store')])[1]")).click();

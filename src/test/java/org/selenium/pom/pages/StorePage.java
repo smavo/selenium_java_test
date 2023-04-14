@@ -10,7 +10,6 @@ public class StorePage extends BasePage {
     private final By searchField = By.xpath("//input[@class='search-field']");
     private final By searchButton = By.xpath("//button[@value='Search']");
     private final By title = By.xpath("//h1[contains(@class,'woocommerce-products-header__title page-title')]");
-    private final By addToCardButton = By.xpath("//a[@href='?add-to-cart=1215'][contains(.,'Add to cart')]");
 
     public StorePage(WebDriver driver) {
         super(driver);
@@ -34,7 +33,8 @@ public class StorePage extends BasePage {
 
     }
 
-    public void clickAddToCardButton(){
+    public void clickAddToCardButton(String productName){
+        By addToCardButton = By.xpath("//a[@aria-label='Add “"+productName+"” to your cart']");
         driver.findElement(addToCardButton).click();
     }
 

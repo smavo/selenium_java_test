@@ -23,7 +23,7 @@ public class TestPom03 extends BaseTest {
         storePage.searchTextPublic("Blue");  // Esta función reemplaza a las 2 primeras aplicando "functional page object"
 
         storePage.getTitleResult("Search results: “Blue”");
-        storePage.clickAddToCardButton();
+        storePage.clickAddToCardButton("Blue Shoes");
 
         driver.findElement(By.xpath("//a[@href='?add-to-cart=1215'][contains(.,'Add to cart')]")).click();
         Thread.sleep(3000);
