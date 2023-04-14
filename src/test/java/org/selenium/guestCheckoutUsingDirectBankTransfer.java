@@ -11,7 +11,8 @@ public class guestCheckoutUsingDirectBankTransfer {
     public void Dummytest() throws InterruptedException{
 
         // System Property for Chrome Driver
-        System.setProperty("webdriver.chrome.driver","D:\\Drivers\\chromedriver_112.0.5615.49.exe");
+        // System.setProperty("webdriver.chrome.driver","D:\\Drivers\\chromedriver_112.0.5615.49.exe");
+
         // Instantiate a ChromeDriver class.
         WebDriver driver=new ChromeDriver();
 
@@ -76,7 +77,8 @@ public class guestCheckoutUsingDirectBankTransfer {
     public void testDemo() throws InterruptedException{
 
         // System Property for Chrome Driver
-        System.setProperty("webdriver.chrome.driver","D:\\Drivers\\chromedriver_112.0.5615.49.exe");
+        // System.setProperty("webdriver.chrome.driver","D:\\Drivers\\chromedriver_112.0.5615.49.exe");
+
         // Instantiate a ChromeDriver class.
         WebDriver driver=new ChromeDriver();
 
