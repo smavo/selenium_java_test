@@ -35,9 +35,11 @@ public class StorePage extends BasePage {
 
     }
 
-    public void clickAddToCardButton(String productName){
+    // POM - Usando Variables clickAddToCard
+    public void clickAddToCardButton(String productName) throws InterruptedException{
         By addToCardButton = By.xpath("//a[@aria-label='Add “"+productName+"” to your cart']");
         driver.findElement(addToCardButton).click();
+        Thread.sleep(3000);
     }
 
     // functional page object ---> objeto de página funcional
@@ -46,7 +48,7 @@ public class StorePage extends BasePage {
         driver.findElement(searchButton).click();
     }
 
-    // POM
+    // POM - Sin usar Variables clickAddToCard
     public void clickAddToCard() throws InterruptedException{
         driver.findElement(addToCard).click();
         Thread.sleep(3000);

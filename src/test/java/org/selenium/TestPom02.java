@@ -13,10 +13,7 @@ public class TestPom02 extends BaseTest {
     @Test
     public void demotest() throws InterruptedException{
 
-        // Launch Website
-        driver.get("https://askomdch.com/");
-
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(driver).load();
         StorePage storePage = homePage.clicStoreMenuLink();
 
         // Search
@@ -33,10 +30,12 @@ public class TestPom02 extends BaseTest {
         Assert.assertEquals(
                   driver.findElement(By.xpath("//h1[contains(@class,'woocommerce-products-header__title page-title')]")).getText(),
                   "Search results: “Blue”"
-        ); */
+        );
 
         driver.findElement(By.xpath("//a[@href='?add-to-cart=1215'][contains(.,'Add to cart')]")).click();
         Thread.sleep(3000);
+        */
+
         driver.findElement(By.xpath("//a[@title='View cart']")).click();
 
         // Page Cart

@@ -12,9 +12,9 @@ public class TestPom01 extends BaseTest {
     public void demotest() throws InterruptedException{
 
         // Launch Website
-        driver.get("https://askomdch.com/");
+        // driver.get("https://askomdch.com/");
 
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(driver).load();
         StorePage storePage = homePage.clicStoreMenuLink();
 
         // Search

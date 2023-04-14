@@ -29,16 +29,19 @@ public class CheckoutPage extends BasePage {
     }
 
     public CheckoutPage enterFirstName(String firstname){
+        driver.findElement(firstNameField).clear();
         driver.findElement(firstNameField).sendKeys(firstname);
         return this;
     }
 
     public CheckoutPage enterLastName(String lastName){
+        driver.findElement(lastNameField).clear();
         driver.findElement(lastNameField).sendKeys(lastName);
         return this;
     }
 
     public CheckoutPage enterCompanyName(String companyName){
+        driver.findElement(CompanyNameField).clear();
         driver.findElement(CompanyNameField).sendKeys(companyName);
         return this;
     }
@@ -51,43 +54,50 @@ public class CheckoutPage extends BasePage {
     }
 
     public CheckoutPage enterAddress_1(String Address1){
+        driver.findElement(address_1).clear();
         driver.findElement(address_1).sendKeys(Address1);
         return this;
     }
 
     public CheckoutPage enterAddress_2(String Address2){
+        driver.findElement(address_2).clear();
         driver.findElement(address_2).sendKeys(Address2);
         return this;
     }
 
     public CheckoutPage clickCity(String city){
+        driver.findElement(cityField).clear();
         driver.findElement(cityField).sendKeys(city);
         return this;
     }
 
     public CheckoutPage SelectState(String state){
-        By SelectState =  By.xpath("//ul/li[@class='select2-results__option'][contains(.,'"+state+"')]");
+        By SelectState = By.xpath("//ul/li[@class='select2-results__option'][contains(.,'"+state+"')]");
         driver.findElement(stateSelector).click();
         driver.findElement(SelectState).click();
         return this;
     }
 
     public CheckoutPage enterPostcodeField(String postcode){
+        driver.findElement(enterPostcode).clear();
         driver.findElement(enterPostcode).sendKeys(postcode);
         return this;
     }
 
     public CheckoutPage enterPhoneField(String phone){
+        driver.findElement(enterPhone).clear();
         driver.findElement(enterPhone).sendKeys(phone);
         return this;
     }
 
     public CheckoutPage enterEmailField(String email){
+        driver.findElement(enterEmail).clear();
         driver.findElement(enterEmail).sendKeys(email);
         return this;
     }
 
     public CheckoutPage enterCommentsField(String comments, Integer tiempo) throws InterruptedException{
+        driver.findElement(enterComments).clear();
         driver.findElement(enterComments).sendKeys(comments);
         Thread.sleep(tiempo);
         return this;

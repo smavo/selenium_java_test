@@ -12,10 +12,7 @@ public class TestPom03 extends BaseTest {
     @Test
     public void demotest() throws InterruptedException{
 
-        // Launch Website
-        driver.get("https://askomdch.com/");
-
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(driver).load();
         StorePage storePage = homePage.clicStoreMenuLink();
 
         // Search
@@ -25,8 +22,8 @@ public class TestPom03 extends BaseTest {
 
         storePage.getTitleResult("Search results: “Blue”");
         storePage.clickAddToCardButton("Blue Shoes");
-        storePage.clickAddToCard();
 
+        // storePage.clickAddToCard();
         CartPage cartPage = storePage.clickViewCart();
 
         // Page Cart
