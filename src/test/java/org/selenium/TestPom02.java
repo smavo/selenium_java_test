@@ -6,18 +6,23 @@ import org.selenium.pom.pages.StorePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TestPom01 extends BaseTest {
+import java.util.Collections;
+
+public class TestPom02 extends BaseTest {
 
     @Test
     public void demotest() throws InterruptedException{
-
-        // Launch Website
-        // driver.get("https://askomdch.com/");
 
         HomePage homePage = new HomePage(driver).load();
         StorePage storePage = homePage.clicStoreMenuLink();
 
         // Search
+        storePage.textInSearchField("Blue");
+        storePage.clickSearchBtn();
+        storePage.getTitleResult("Search results: “Blue”");
+        storePage.clickAddToCardButton("Blue Shoes");
+
+        /* Search
         driver.findElement(By.xpath("(//li/a[contains(.,'Store')])[1]")).click();
         driver.findElement(By.xpath("//input[@class='search-field']")).sendKeys("Blue");
         driver.findElement(By.xpath("//button[@value='Search']")).click();
@@ -29,6 +34,8 @@ public class TestPom01 extends BaseTest {
 
         driver.findElement(By.xpath("//a[@href='?add-to-cart=1215'][contains(.,'Add to cart')]")).click();
         Thread.sleep(3000);
+        */
+
         driver.findElement(By.xpath("//a[@title='View cart']")).click();
 
         // Page Cart

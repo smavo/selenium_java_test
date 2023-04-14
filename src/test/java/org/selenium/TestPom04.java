@@ -1,50 +1,60 @@
 package org.selenium;
 import org.openqa.selenium.By;
 import org.selenium.pom.base.BaseTest;
+import org.selenium.pom.pages.CartPage;
+import org.selenium.pom.pages.CheckoutPage;
 import org.selenium.pom.pages.HomePage;
 import org.selenium.pom.pages.StorePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TestPom01 extends BaseTest {
+public class TestPom04 extends BaseTest {
 
     @Test
     public void demotest() throws InterruptedException{
-
-        // Launch Website
-        // driver.get("https://askomdch.com/");
 
         HomePage homePage = new HomePage(driver).load();
         StorePage storePage = homePage.clicStoreMenuLink();
 
         // Search
-        driver.findElement(By.xpath("(//li/a[contains(.,'Store')])[1]")).click();
-        driver.findElement(By.xpath("//input[@class='search-field']")).sendKeys("Blue");
-        driver.findElement(By.xpath("//button[@value='Search']")).click();
+        storePage.textInSearchField("Blue");
+        storePage.clickSearchBtn();
+        // storePage.searchTextPublic("Blue");  // Esta función reemplaza a las 2 primeras aplicando "functional page object"
 
-        Assert.assertEquals(
-                  driver.findElement(By.xpath("//h1[contains(@class,'woocommerce-products-header__title page-title')]")).getText(),
-                  "Search results: “Blue”"
-        );
+        storePage.getTitleResult("Search results: “Blue”");
+        storePage.clickAddToCardButton("Denim Blue Jeans");
 
-        driver.findElement(By.xpath("//a[@href='?add-to-cart=1215'][contains(.,'Add to cart')]")).click();
-        Thread.sleep(3000);
-        driver.findElement(By.xpath("//a[@title='View cart']")).click();
+        CartPage cartPage = storePage.clickViewCart();
 
         // Page Cart
-        Assert.assertEquals(driver.findElement(By.xpath("//a[contains(.,'Blue Shoes')]")).getText(),
-                 "Blue Shoes"
-        );
-        Thread.sleep(4000);
-        driver.findElement(By.xpath("//a[contains(@class,'checkout-button button alt wc-forward')]")).click();
+        cartPage.getTitleResult("Denim Blue Jeans", 3000);
+        CheckoutPage checkoutPage = cartPage.clickCheckoutButton(3000);
 
         // Page Checkout
+        checkoutPage.enterFirstName("Test")
+                .enterLastName("Test")
+                .enterCompanyName("Testing ORG")
+                .SelectCountry("Peru")
+                .enterAddress_1("San Luis - Lima")
+                .enterAddress_2("Perú 2023")
+                .clickCity("Ate Vitarte")
+                .SelectState("Lima")
+                .enterPostcodeField("15744")
+                .enterPhoneField("978554490")
+                .enterEmailField("test@gmail.com")
+                .enterCommentsField("Orden de compra de prueba", 3000)
+                .ClickPaymentMethod(3000)
+                .ClickPlaceOrder(3000)
+                .getTitleCheckoutValid("Checkout", "Thank you. Your order has been received.");
+
+        // Page Checkout
+        /*
         driver.findElement(By.id("billing_first_name")).sendKeys("Test");
         driver.findElement(By.id("billing_last_name")).sendKeys("Test");
         driver.findElement(By.id("billing_company")).sendKeys("Testing ORG");
         driver.findElement(By.xpath("//span[@id='select2-billing_country-container']")).click();
         driver.findElement(By.xpath("//span/ul/li[contains(.,'Peru')]")).click();
-        driver.findElement(By.id("billing_address_1")).sendKeys("Chosica - Lima");
+        driver.findElement(By.id("billing_address_1")).sendKeys("Ate Vitarte - Lima");
         driver.findElement(By.id("billing_address_2")).sendKeys("Perú 2023");
         driver.findElement(By.id("billing_city")).sendKeys("Lima");
         driver.findElement(By.xpath("//span[@id='select2-billing_state-container']")).click();
@@ -54,6 +64,7 @@ public class TestPom01 extends BaseTest {
         driver.findElement(By.id("billing_email")).sendKeys("test@gmail.com");
         driver.findElement(By.id("order_comments")).sendKeys("Orden de compra de prueba");
         Thread.sleep(3000);
+
         driver.findElement(By.xpath("//input[@id='payment_method_cod']")).click();
         Thread.sleep(3000);
 
@@ -64,7 +75,8 @@ public class TestPom01 extends BaseTest {
                 "Checkout"
         );
 
-        driver.quit();
+        */
+        // driver.quit();
 
     }
 
