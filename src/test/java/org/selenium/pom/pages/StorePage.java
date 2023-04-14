@@ -10,6 +10,8 @@ public class StorePage extends BasePage {
     private final By searchField = By.xpath("//input[@class='search-field']");
     private final By searchButton = By.xpath("//button[@value='Search']");
     private final By title = By.xpath("//h1[contains(@class,'woocommerce-products-header__title page-title')]");
+    private final By addToCard = By.xpath("//a[@href='?add-to-cart=1215'][contains(.,'Add to cart')]");
+    private final By viewCart = By.xpath("//a[@title='View cart']");
 
     public StorePage(WebDriver driver) {
         super(driver);
@@ -42,6 +44,18 @@ public class StorePage extends BasePage {
     public void searchTextPublic(String texto){
         driver.findElement(searchField).sendKeys(texto);
         driver.findElement(searchButton).click();
+    }
+
+    // POM
+    public void clickAddToCard() throws InterruptedException{
+        driver.findElement(addToCard).click();
+        Thread.sleep(3000);
+    }
+
+    // Page CartPage
+    public CartPage clickViewCart(){
+        driver.findElement(viewCart).click();
+        return new CartPage(driver);
     }
 
 

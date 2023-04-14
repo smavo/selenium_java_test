@@ -1,6 +1,7 @@
 package org.selenium;
 import org.openqa.selenium.By;
 import org.selenium.pom.base.BaseTest;
+import org.selenium.pom.pages.CartPage;
 import org.selenium.pom.pages.HomePage;
 import org.selenium.pom.pages.StorePage;
 import org.testng.Assert;
@@ -24,7 +25,15 @@ public class TestPom03 extends BaseTest {
 
         storePage.getTitleResult("Search results: “Blue”");
         storePage.clickAddToCardButton("Blue Shoes");
+        storePage.clickAddToCard();
 
+        CartPage cartPage = storePage.clickViewCart();
+
+        // Page Cart
+        cartPage.getTitleResult("Blue Shoes", 3000);
+        cartPage.clickCheckoutButton(3000);
+
+        /*
         driver.findElement(By.xpath("//a[@href='?add-to-cart=1215'][contains(.,'Add to cart')]")).click();
         Thread.sleep(3000);
         driver.findElement(By.xpath("//a[@title='View cart']")).click();
@@ -35,6 +44,7 @@ public class TestPom03 extends BaseTest {
         );
         Thread.sleep(4000);
         driver.findElement(By.xpath("//a[contains(@class,'checkout-button button alt wc-forward')]")).click();
+        */
 
         // Page Checkout
         driver.findElement(By.id("billing_first_name")).sendKeys("Test");
