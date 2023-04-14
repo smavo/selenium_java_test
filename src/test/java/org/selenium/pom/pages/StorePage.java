@@ -16,6 +16,7 @@ public class StorePage extends BasePage {
         super(driver);
     }
 
+    // Page Object Model ---> modelo de objeto de página
     public void textInSearchField(String texto){
         driver.findElement(searchField).sendKeys(texto);
     }
@@ -36,5 +37,12 @@ public class StorePage extends BasePage {
     public void clickAddToCardButton(){
         driver.findElement(addToCardButton).click();
     }
+
+    // functional page object ---> objeto de página funcional
+    public void searchTextPublic(String texto){
+        driver.findElement(searchField).sendKeys(texto);
+        driver.findElement(searchButton).click();
+    }
+
 
 }
