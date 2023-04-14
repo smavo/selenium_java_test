@@ -21,15 +21,19 @@ public class TestPom05 extends BaseTest {
         // storePage.searchTextPublic("Blue");  // Esta función reemplaza a las 2 primeras aplicando "functional page object"
 
         storePage.getTitleResult("Search results: “Blue”");
-        storePage.clickAddToCardButton("Denim Blue Jeans");
+        storePage.clickAddToCardButton("Faint Blue Jeans");
 
         // storePage.clickAddToCard();
         CartPage cartPage = storePage.clickViewCart();
 
         // Page Cart
-        cartPage.getTitleResult("Denim Blue Jeans", 3000);
+        cartPage.getTitleResult("Faint Blue Jeans", 3000);
         CheckoutPage checkoutPage = cartPage.clickCheckoutButton(3000);
 
+        // Login
+        checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
+
+        /*
         // Click here to login
         Thread.sleep(3000);
         driver.findElement(By.xpath("//div/div[@class='woocommerce-info']/a[contains(.,'Click here to login')]")).click();
@@ -39,6 +43,7 @@ public class TestPom05 extends BaseTest {
         driver.findElement(By.xpath("//input[contains(@id,'rememberme')]")).click();
         Thread.sleep(2000);
         driver.findElement(By.xpath("//button[@name='login']")).click();
+        */
 
         // Page Checkout
         checkoutPage.enterFirstName("Test")

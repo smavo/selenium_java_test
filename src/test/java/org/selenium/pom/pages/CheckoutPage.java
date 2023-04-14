@@ -23,6 +23,11 @@ public class CheckoutPage extends BasePage {
     private final By placeOrder = By.id("place_order");
     private final By checkoutOrderTitle = By.xpath("//h1[contains(.,'Checkout')]");
     private final By checkoutOrderText = By.xpath("//p[contains(.,'Thank you. Your order has been received.')]");
+    private final By hereToLoginClick = By.xpath("//div/div[@class='woocommerce-info']/a[contains(.,'Click here to login')]");
+    private final By enterUsernameField = By.xpath("//form/p/input[@name='username']");
+    private final By enterPasswordField = By.xpath("//p/span/input[@id='password']");
+    private final By rememberClick = By.xpath("//input[contains(@id,'rememberme')]");
+    private final By buttonLoginClick = By.xpath("//button[@name='login']");
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -125,6 +130,44 @@ public class CheckoutPage extends BasePage {
                 driver.findElement(checkoutOrderText).getText(),txtSubTitle
         );
 
+    }
+
+    public CheckoutPage clickHereToLoginLink(Integer tiempo) throws InterruptedException{
+        Thread.sleep(tiempo);
+        driver.findElement(hereToLoginClick).click();
+        Thread.sleep(tiempo);
+        return this;
+    }
+
+    public CheckoutPage enterUsername(String username){
+        driver.findElement(enterUsernameField).clear();
+        driver.findElement(enterUsernameField).sendKeys(username);
+        return this;
+    }
+
+    public CheckoutPage enterPassword( String password){
+        driver.findElement(enterPasswordField).clear();
+        driver.findElement(enterPasswordField).sendKeys(password);
+        return this;
+    }
+
+    public CheckoutPage clickRememberButton(Integer tiempo) throws InterruptedException {
+        driver.findElement(rememberClick).click();
+        Thread.sleep(tiempo);
+        return this;
+    }
+
+    public CheckoutPage clickButtonLogin(Integer tiempo) throws InterruptedException {
+        driver.findElement(buttonLoginClick).click();
+        Thread.sleep(tiempo);
+        return this;
+    }
+
+    public CheckoutPage login(String username, String password, Integer tiempo) throws InterruptedException{
+        return clickHereToLoginLink(tiempo)
+                .enterUsername(username)
+                .enterPassword(password)
+                .clickRememberButton(tiempo).clickButtonLogin(tiempo);
     }
 
 }
