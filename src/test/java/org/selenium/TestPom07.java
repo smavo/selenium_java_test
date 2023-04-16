@@ -1,27 +1,27 @@
 package org.selenium;
 import org.selenium.pom.base.BaseTest;
-import org.selenium.pom.objects.BillingAdress01;
+import org.selenium.pom.objects.BillingAdress;
 import org.selenium.pom.pages.CartPage;
 import org.selenium.pom.pages.CheckoutPage;
 import org.selenium.pom.pages.HomePage;
 import org.selenium.pom.pages.StorePage;
 import org.testng.annotations.Test;
 
-public class TestPom06 extends BaseTest {
+public class TestPom07 extends BaseTest {
 
     @Test
     public void EndToEndTest() throws InterruptedException{
-        BillingAdress01 billingAdress01 = new BillingAdress01();
-        billingAdress01.setFirstname("Test 01");
-        billingAdress01.setLastname("Sample 02");
-        billingAdress01.setCompany("Testing Hands 2023");
-        billingAdress01.setAddres01("SAN FRANCISCO");
-        billingAdress01.setAddres02("CALIFORNIA");
-        billingAdress01.setCity("PALO ALTO");
-        billingAdress01.setPostcode("14555");
-        billingAdress01.setPhone("0123545698");
-        billingAdress01.setEmail("test@gmail.com");
-        billingAdress01.setComments("Orden de compra test 01");
+        BillingAdress billingAdress = new BillingAdress()
+        .setFirstnames("Test 01")
+        .setLastnames("Sample 02")
+        .setCompanys("Testing Hands 2023")
+        .setAddres01s("SAN FRANCISCO")
+        .setAddres02s("CALIFORNIA")
+        .setCitys("PALO ALTO")
+        .setPostcodes("14555")
+        .setPhones("0123545698")
+        .setEmails("test@gmail.com")
+        .setCommentss("Orden de compra test 01");
 
         HomePage homePage = new HomePage(driver).load();
         StorePage storePage = homePage.clicStoreMenuLink();
@@ -45,19 +45,7 @@ public class TestPom06 extends BaseTest {
         // checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
 
         // Page Checkout
-        checkoutPage.setBillingAdress01(billingAdress01)
-                /* .enterFirstName("Test")
-                .enterLastName("Test")
-                .enterCompanyName("Testing ORG")
-                .SelectCountry("Peru")
-                .enterAddress_1("San Luis - Lima")
-                .enterAddress_2("Perú 2023")
-                .clickCity("Ate Vitarte")
-                .SelectState("Lima")
-                .enterPostcodeField("15744")
-                .enterPhoneField("978554490")
-                .enterEmailField("test@gmail.com")
-                .enterCommentsField("Orden de compra de prueba") */
+        checkoutPage.setBillingAdress(billingAdress)
                 .ClickPaymentMethod(2000)
                 .ClickPlaceOrder(5000)
                 .getTitleCheckoutValid("Checkout", "Thank you. Your order has been received.");

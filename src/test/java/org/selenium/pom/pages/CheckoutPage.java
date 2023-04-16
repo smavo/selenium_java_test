@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.selenium.pom.base.BasePage;
 import org.selenium.pom.objects.BillingAdress01;
+import org.selenium.pom.objects.BillingAdress;
 import org.testng.Assert;
 
 public class CheckoutPage extends BasePage {
@@ -172,7 +173,7 @@ public class CheckoutPage extends BasePage {
                 .clickRememberButton(tiempo).clickButtonLogin(tiempo);
     }
 
-    public CheckoutPage setBillingAdress (BillingAdress01 billingAdress01){
+    public CheckoutPage setBillingAdress01 (BillingAdress01 billingAdress01){
         return enterFirstName(billingAdress01.getFirstname())
                 .enterLastName(billingAdress01.getLastname())
                 .enterCompanyName(billingAdress01.getCompany())
@@ -183,5 +184,18 @@ public class CheckoutPage extends BasePage {
                 .enterPhoneField(billingAdress01.getPhone())
                 .enterEmailField(billingAdress01.getEmail())
                 .enterCommentsField(billingAdress01.getComments());
+    }
+
+    public CheckoutPage setBillingAdress (BillingAdress billingAdress){
+        return enterFirstName(billingAdress.getFirstnames())
+                .enterLastName(billingAdress.getLastnames())
+                .enterCompanyName(billingAdress.getCompanys())
+                .enterAddress_1(billingAdress.getAddres01s())
+                .enterAddress_2(billingAdress.getAddres02s())
+                .clickCity(billingAdress.getCitys())
+                .enterPostcodeField(billingAdress.getPostcodes())
+                .enterPhoneField(billingAdress.getPhones())
+                .enterEmailField(billingAdress.getEmails())
+                .enterCommentsField(billingAdress.getCommentss());
     }
 }
