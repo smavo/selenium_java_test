@@ -3,6 +3,7 @@ package org.selenium.pom.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.selenium.pom.base.BasePage;
+import org.selenium.pom.objects.BillingAdress01;
 import org.testng.Assert;
 
 public class CheckoutPage extends BasePage {
@@ -20,7 +21,7 @@ public class CheckoutPage extends BasePage {
     private final By enterEmail = By.id("billing_email");
     private final By enterComments =  By.id("order_comments");
     private final By paymentMethod = By.xpath("//input[@id='payment_method_cod']"); // //input[@id='payment_method_bacs']
-    private final By placeOrder = By.id("place_order");
+    private final By placeOrderButton = By.id("place_order");
     private final By checkoutOrderTitle = By.xpath("//h1[contains(.,'Checkout')]");
     private final By checkoutOrderText = By.xpath("//p[contains(.,'Thank you. Your order has been received.')]");
     private final By hereToLoginClick = By.xpath("//div/div[@class='woocommerce-info']/a[contains(.,'Click here to login')]");
@@ -101,21 +102,22 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
-    public CheckoutPage enterCommentsField(String comments, Integer tiempo) throws InterruptedException{
+    public CheckoutPage enterCommentsField(String comments) {
         driver.findElement(enterComments).clear();
         driver.findElement(enterComments).sendKeys(comments);
-        Thread.sleep(tiempo);
         return this;
     }
 
     public CheckoutPage ClickPaymentMethod(Integer tiempo) throws InterruptedException{
+        Thread.sleep(tiempo);
         driver.findElement(paymentMethod).click() ;
         Thread.sleep(tiempo);
         return this;
     }
 
     public CheckoutPage ClickPlaceOrder(Integer tiempo) throws InterruptedException{
-        driver.findElement(placeOrder).click() ;
+        Thread.sleep(tiempo);
+        driver.findElement(placeOrderButton).click() ;
         Thread.sleep(tiempo);
         return this;
     }
@@ -170,4 +172,16 @@ public class CheckoutPage extends BasePage {
                 .clickRememberButton(tiempo).clickButtonLogin(tiempo);
     }
 
+    public CheckoutPage setBillingAdress (BillingAdress01 billingAdress01){
+        return enterFirstName(billingAdress01.getFirstname())
+                .enterLastName(billingAdress01.getLastname())
+                .enterCompanyName(billingAdress01.getCompany())
+                .enterAddress_1(billingAdress01.getAddres01())
+                .enterAddress_2(billingAdress01.getAddres02())
+                .clickCity(billingAdress01.getCity())
+                .enterPostcodeField(billingAdress01.getPostcode())
+                .enterPhoneField(billingAdress01.getPhone())
+                .enterEmailField(billingAdress01.getEmail())
+                .enterCommentsField(billingAdress01.getComments());
+    }
 }
