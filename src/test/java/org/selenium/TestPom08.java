@@ -46,7 +46,7 @@ public class TestPom08 extends BaseTest {
         CheckoutPage checkoutPage = cartPage.clickCheckoutButton(3000);
 
         // Login
-        // checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
+        checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
 
         // Page Checkout
         checkoutPage.setBillingAdress(billingAdress)
