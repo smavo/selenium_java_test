@@ -3,8 +3,9 @@ package org.selenium.pom.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.selenium.pom.base.BasePage;
-import org.selenium.pom.objects.BillingAdress01;
 import org.selenium.pom.objects.BillingAdress;
+import org.selenium.pom.objects.BillingAdress01;
+import org.selenium.pom.objects.BillingAdress02;
 import org.testng.Assert;
 
 public class CheckoutPage extends BasePage {
@@ -186,6 +187,18 @@ public class CheckoutPage extends BasePage {
                 .enterCommentsField(billingAdress01.getComments());
     }
 
+    public CheckoutPage setBillingAdress02 (BillingAdress02 billingAdress02){
+        return enterFirstName(billingAdress02.getFirstnamess())
+                .enterLastName(billingAdress02.getLastnamess())
+                .enterCompanyName(billingAdress02.getCompanyss())
+                .enterAddress_1(billingAdress02.getAddres01ss())
+                .enterAddress_2(billingAdress02.getAddres02ss())
+                .clickCity(billingAdress02.getCityss())
+                .enterPostcodeField(billingAdress02.getPostcodess())
+                .enterPhoneField(billingAdress02.getPhoness())
+                .enterEmailField(billingAdress02.getEmailss())
+                .enterCommentsField(billingAdress02.getCommentsss());
+    }
     public CheckoutPage setBillingAdress (BillingAdress billingAdress){
         return enterFirstName(billingAdress.getFirstnames())
                 .enterLastName(billingAdress.getLastnames())

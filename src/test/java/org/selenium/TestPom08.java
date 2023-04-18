@@ -36,13 +36,13 @@ public class TestPom08 extends BaseTest {
         // storePage.searchTextPublic("Blue");  // Esta función reemplaza a las 2 primeras aplicando "functional page object"
 
         storePage.getTitleResult("Search results: “Blue”");
-        storePage.clickAddToCardButton("Faint Blue Jeans");
+        storePage.clickAddToCardButton("Blue Tshirt");
 
         // storePage.clickAddToCard();
         CartPage cartPage = storePage.clickViewCart();
 
         // Page Cart
-        cartPage.getTitleResult("Faint Blue Jeans", 3000);
+        cartPage.getTitleResult("Blue Tshirt", 3000);
         CheckoutPage checkoutPage = cartPage.clickCheckoutButton(3000);
 
         // Login
