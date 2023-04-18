@@ -9,7 +9,6 @@ import org.selenium.pom.utils.JacksonUtils;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 public class TestPom10 extends BaseTest {
 
@@ -36,13 +35,12 @@ public class TestPom10 extends BaseTest {
         // storePage.searchTextPublic("Blue");  // Esta función reemplaza a las 2 primeras aplicando "functional page object"
 
         storePage.getTitleResult("Search results: “Blue”");
-        storePage.clickAddToCardButton("Blue Denim Shorts");
+        storePage.clickAddToCardButton("Basic Blue Jeans");
 
-        // storePage.clickAddToCard();
         CartPage cartPage = storePage.clickViewCart();
 
         // Page Cart
-        cartPage.getTitleResult("Blue Denim Shorts", 3000);
+        cartPage.getTitleResult("Basic Blue Jeans", 3000);
         CheckoutPage checkoutPage = cartPage.clickCheckoutButton(3000);
 
         // Login

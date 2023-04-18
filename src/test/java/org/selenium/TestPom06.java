@@ -34,7 +34,6 @@ public class TestPom06 extends BaseTest {
         storePage.getTitleResult("Search results: “Blue”");
         storePage.clickAddToCardButton("Faint Blue Jeans");
 
-        // storePage.clickAddToCard();
         CartPage cartPage = storePage.clickViewCart();
 
         // Page Cart
