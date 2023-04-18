@@ -15,14 +15,17 @@ public class TestPom10 extends BaseTest {
 
     @Test
     public void EndToEndTest() throws InterruptedException, IOException {
-        BillingAdress02 billingAdress02 = new BillingAdress02();
+        BillingAdress02 billingAdress02 = JacksonUtils.deserializeJson("MyData.json", BillingAdress02.class);
+
+        /*BillingAdress02 billingAdress02 = new BillingAdress02();
         InputStream filepath = getClass().getClassLoader().getResourceAsStream("MyData.json");
-        billingAdress02 = JacksonUtils.deserializeJson(filepath, billingAdress02);
-/*
+        billingAdress02 = JacksonUtils.deserializeJson(filepath, billingAdress02);*/
+
+        /*
         BillingAdress billingAdress = new BillingAdress("Test 001", "Sample 01 test",
                 "Testing HANDS 2023", "SAN FRANCISCO", "CALIFORNIA", "PALO ALTO",
                 "14558", "978554477", "test@gmail.com", "Orden de compra de Prueba");
-*/
+        */
 
         HomePage homePage = new HomePage(driver).load();
         StorePage storePage = homePage.clicStoreMenuLink();
@@ -43,7 +46,7 @@ public class TestPom10 extends BaseTest {
         CheckoutPage checkoutPage = cartPage.clickCheckoutButton(3000);
 
         // Login
-        // checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
+        checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
 
         // Page Checkout
         checkoutPage.setBillingAdress02(billingAdress02)
