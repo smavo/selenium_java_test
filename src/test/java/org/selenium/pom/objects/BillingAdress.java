@@ -12,6 +12,20 @@ public class BillingAdress {
     private String emails;
     private String commentss;
 
+    public BillingAdress(String firstnames, String lastnames, String companys,
+                         String addres01s, String addres02s, String citys, String postcodes,
+                         String phones, String emails, String commentss){
+        this.firstnames = firstnames;
+        this.lastnames = lastnames;
+        this.companys = companys;
+        this.addres01s = addres01s;
+        this.addres02s = addres02s;
+        this.citys = citys;
+        this.postcodes = postcodes;
+        this.phones = phones;
+        this.emails = emails;
+        this.commentss = commentss;
+    }
 
     public String getFirstnames() {
         return firstnames;

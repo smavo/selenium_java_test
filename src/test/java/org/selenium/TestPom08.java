@@ -7,11 +7,11 @@ import org.selenium.pom.pages.HomePage;
 import org.selenium.pom.pages.StorePage;
 import org.testng.annotations.Test;
 
-public class TestPom07 extends BaseTest {
+public class TestPom08 extends BaseTest {
 
     @Test
     public void EndToEndTest() throws InterruptedException{
-        BillingAdress billingAdress = new BillingAdress()
+        /* BillingAdress billingAdress = new BillingAdress()
         .setFirstnames("Test 01")
         .setLastnames("Sample 02")
         .setCompanys("Testing Hands 2023")
@@ -21,7 +21,11 @@ public class TestPom07 extends BaseTest {
         .setPostcodes("14555")
         .setPhones("0123545698")
         .setEmails("test@gmail.com")
-        .setCommentss("Orden de compra test 01");
+        .setCommentss("Orden de compra test 01");*/
+
+        BillingAdress billingAdress = new BillingAdress("Test 001", "Sample 01 test",
+                "Testing HANDS 2023", "SAN FRANCISCO", "CALIFORNIA", "PALO ALTO",
+                "14558", "978554477", "test@gmail.com", "Orden de compra de Prueba");
 
         HomePage homePage = new HomePage(driver).load();
         StorePage storePage = homePage.clicStoreMenuLink();
@@ -42,7 +46,7 @@ public class TestPom07 extends BaseTest {
         CheckoutPage checkoutPage = cartPage.clickCheckoutButton(3000);
 
         // Login
-        checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
+        // checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
 
         // Page Checkout
         checkoutPage.setBillingAdress(billingAdress)
