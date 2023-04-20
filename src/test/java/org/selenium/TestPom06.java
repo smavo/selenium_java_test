@@ -1,16 +1,27 @@
 package org.selenium;
-import org.openqa.selenium.By;
 import org.selenium.pom.base.BaseTest;
+import org.selenium.pom.objects.BillingAdress01;
 import org.selenium.pom.pages.CartPage;
 import org.selenium.pom.pages.CheckoutPage;
 import org.selenium.pom.pages.HomePage;
 import org.selenium.pom.pages.StorePage;
 import org.testng.annotations.Test;
 
-public class TestPom05 extends BaseTest {
+public class TestPom06 extends BaseTest {
 
     @Test
-    public void demotest() throws InterruptedException{
+    public void EndToEndTest() throws InterruptedException{
+        BillingAdress01 billingAdress01 = new BillingAdress01();
+        billingAdress01.setFirstname("Test 01");
+        billingAdress01.setLastname("Sample 02");
+        billingAdress01.setCompany("Testing Hands 2023");
+        billingAdress01.setAddres01("SAN FRANCISCO");
+        billingAdress01.setAddres02("CALIFORNIA");
+        billingAdress01.setCity("PALO ALTO");
+        billingAdress01.setPostcode("14555");
+        billingAdress01.setPhone("0123545698");
+        billingAdress01.setEmail("test@gmail.com");
+        billingAdress01.setComments("Orden de compra test 01");
 
         HomePage homePage = new HomePage(driver).load();
         StorePage storePage = homePage.clicStoreMenuLink();
@@ -32,20 +43,9 @@ public class TestPom05 extends BaseTest {
         // Login
         checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
 
-        /*
-        // Click here to login
-        Thread.sleep(3000);
-        driver.findElement(By.xpath("//div/div[@class='woocommerce-info']/a[contains(.,'Click here to login')]")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.xpath("//form/p/input[@name='username']")).sendKeys("test170296@gmail.com");
-        driver.findElement(By.xpath("//p/span/input[@id='password']")).sendKeys("1nd1.sm4rt%%");
-        driver.findElement(By.xpath("//input[contains(@id,'rememberme')]")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.xpath("//button[@name='login']")).click();
-        */
-
         // Page Checkout
-        checkoutPage.enterFirstName("Test")
+        checkoutPage.setBillingAdress01(billingAdress01)
+                /* .enterFirstName("Test")
                 .enterLastName("Test")
                 .enterCompanyName("Testing ORG")
                 .SelectCountry("Peru")
@@ -56,9 +56,9 @@ public class TestPom05 extends BaseTest {
                 .enterPostcodeField("15744")
                 .enterPhoneField("978554490")
                 .enterEmailField("test@gmail.com")
-                .enterCommentsField("Orden de compra de prueba")
+                .enterCommentsField("Orden de compra de prueba") */
                 .ClickPaymentMethod(2000)
-                .ClickPlaceOrder(3000)
+                .ClickPlaceOrder(5000)
                 .getTitleCheckoutValid("Checkout", "Thank you. Your order has been received.");
     }
 

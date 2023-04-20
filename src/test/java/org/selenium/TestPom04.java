@@ -42,9 +42,9 @@ public class TestPom04 extends BaseTest {
                 .enterPostcodeField("15744")
                 .enterPhoneField("978554490")
                 .enterEmailField("test@gmail.com")
-                .enterCommentsField("Orden de compra de prueba", 3000)
-                .ClickPaymentMethod(3000)
-                .ClickPlaceOrder(3000)
+                .enterCommentsField("Orden de compra de prueba")
+                .ClickPaymentMethod(2000)
+                .ClickPlaceOrder(5000)
                 .getTitleCheckoutValid("Checkout", "Thank you. Your order has been received.");
 
         // Page Checkout

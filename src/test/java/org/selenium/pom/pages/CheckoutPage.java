@@ -3,6 +3,9 @@ package org.selenium.pom.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.selenium.pom.base.BasePage;
+import org.selenium.pom.objects.BillingAdress;
+import org.selenium.pom.objects.BillingAdress01;
+import org.selenium.pom.objects.BillingAdress02;
 import org.testng.Assert;
 
 public class CheckoutPage extends BasePage {
@@ -20,9 +23,14 @@ public class CheckoutPage extends BasePage {
     private final By enterEmail = By.id("billing_email");
     private final By enterComments =  By.id("order_comments");
     private final By paymentMethod = By.xpath("//input[@id='payment_method_cod']"); // //input[@id='payment_method_bacs']
-    private final By placeOrder = By.id("place_order");
+    private final By placeOrderButton = By.id("place_order");
     private final By checkoutOrderTitle = By.xpath("//h1[contains(.,'Checkout')]");
     private final By checkoutOrderText = By.xpath("//p[contains(.,'Thank you. Your order has been received.')]");
+    private final By hereToLoginClick = By.xpath("//div/div[@class='woocommerce-info']/a[contains(.,'Click here to login')]");
+    private final By enterUsernameField = By.xpath("//form/p/input[@name='username']");
+    private final By enterPasswordField = By.xpath("//p/span/input[@id='password']");
+    private final By rememberClick = By.xpath("//input[contains(@id,'rememberme')]");
+    private final By buttonLoginClick = By.xpath("//button[@name='login']");
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -96,21 +104,22 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
-    public CheckoutPage enterCommentsField(String comments, Integer tiempo) throws InterruptedException{
+    public CheckoutPage enterCommentsField(String comments) {
         driver.findElement(enterComments).clear();
         driver.findElement(enterComments).sendKeys(comments);
-        Thread.sleep(tiempo);
         return this;
     }
 
     public CheckoutPage ClickPaymentMethod(Integer tiempo) throws InterruptedException{
+        Thread.sleep(tiempo);
         driver.findElement(paymentMethod).click() ;
         Thread.sleep(tiempo);
         return this;
     }
 
     public CheckoutPage ClickPlaceOrder(Integer tiempo) throws InterruptedException{
-        driver.findElement(placeOrder).click() ;
+        Thread.sleep(tiempo);
+        driver.findElement(placeOrderButton).click() ;
         Thread.sleep(tiempo);
         return this;
     }
@@ -127,4 +136,79 @@ public class CheckoutPage extends BasePage {
 
     }
 
+    public CheckoutPage clickHereToLoginLink(Integer tiempo) throws InterruptedException{
+        Thread.sleep(tiempo);
+        driver.findElement(hereToLoginClick).click();
+        Thread.sleep(tiempo);
+        return this;
+    }
+
+    public CheckoutPage enterUsername(String username){
+        driver.findElement(enterUsernameField).clear();
+        driver.findElement(enterUsernameField).sendKeys(username);
+        return this;
+    }
+
+    public CheckoutPage enterPassword( String password){
+        driver.findElement(enterPasswordField).clear();
+        driver.findElement(enterPasswordField).sendKeys(password);
+        return this;
+    }
+
+    public CheckoutPage clickRememberButton(Integer tiempo) throws InterruptedException {
+        driver.findElement(rememberClick).click();
+        Thread.sleep(tiempo);
+        return this;
+    }
+
+    public CheckoutPage clickButtonLogin(Integer tiempo) throws InterruptedException {
+        driver.findElement(buttonLoginClick).click();
+        Thread.sleep(tiempo);
+        return this;
+    }
+
+    public CheckoutPage login(String username, String password, Integer tiempo) throws InterruptedException{
+        return clickHereToLoginLink(tiempo)
+                .enterUsername(username)
+                .enterPassword(password)
+                .clickRememberButton(tiempo).clickButtonLogin(tiempo);
+    }
+
+    public CheckoutPage setBillingAdress01 (BillingAdress01 billingAdress01){
+        return enterFirstName(billingAdress01.getFirstname())
+                .enterLastName(billingAdress01.getLastname())
+                .enterCompanyName(billingAdress01.getCompany())
+                .enterAddress_1(billingAdress01.getAddres01())
+                .enterAddress_2(billingAdress01.getAddres02())
+                .clickCity(billingAdress01.getCity())
+                .enterPostcodeField(billingAdress01.getPostcode())
+                .enterPhoneField(billingAdress01.getPhone())
+                .enterEmailField(billingAdress01.getEmail())
+                .enterCommentsField(billingAdress01.getComments());
+    }
+
+    public CheckoutPage setBillingAdress02 (BillingAdress02 billingAdress02){
+        return enterFirstName(billingAdress02.getFirstnamess())
+                .enterLastName(billingAdress02.getLastnamess())
+                .enterCompanyName(billingAdress02.getCompanyss())
+                .enterAddress_1(billingAdress02.getAddres01ss())
+                .enterAddress_2(billingAdress02.getAddres02ss())
+                .clickCity(billingAdress02.getCityss())
+                .enterPostcodeField(billingAdress02.getPostcodess())
+                .enterPhoneField(billingAdress02.getPhoness())
+                .enterEmailField(billingAdress02.getEmailss())
+                .enterCommentsField(billingAdress02.getCommentsss());
+    }
+    public CheckoutPage setBillingAdress (BillingAdress billingAdress){
+        return enterFirstName(billingAdress.getFirstnames())
+                .enterLastName(billingAdress.getLastnames())
+                .enterCompanyName(billingAdress.getCompanys())
+                .enterAddress_1(billingAdress.getAddres01s())
+                .enterAddress_2(billingAdress.getAddres02s())
+                .clickCity(billingAdress.getCitys())
+                .enterPostcodeField(billingAdress.getPostcodes())
+                .enterPhoneField(billingAdress.getPhones())
+                .enterEmailField(billingAdress.getEmails())
+                .enterCommentsField(billingAdress.getCommentss());
+    }
 }
