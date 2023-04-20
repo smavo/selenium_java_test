@@ -2,6 +2,7 @@ package org.selenium.pom.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.selenium.pom.base.BasePage;
 import org.testng.Assert;
 
@@ -15,6 +16,10 @@ public class StorePage extends BasePage {
 
     public StorePage(WebDriver driver) {
         super(driver);
+    }
+
+    public Boolean isLoaded(){
+        return  wait.until(ExpectedConditions.urlContains("/store"));
     }
 
     // Page Object Model ---> modelo de objeto de página

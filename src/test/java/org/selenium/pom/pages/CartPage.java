@@ -10,8 +10,14 @@ public class CartPage extends BasePage {
 
     private final By titleResult =  By.cssSelector("td[class='product-name'] a");
     private final By checkoutButton = By.xpath("//a[contains(@class,'checkout-button button alt wc-forward')]");
+    private final By cartHeading = By.cssSelector(".has-text-align-center");
+
     public CartPage(WebDriver driver){
         super(driver);
+    }
+
+    public Boolean isLoaded(){
+        return wait.until(ExpectedConditions.textToBe(cartHeading, "Cart"));
     }
 
     public void getTitleResult(String textoCompare, Integer tiempo) throws InterruptedException{
