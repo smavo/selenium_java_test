@@ -12,26 +12,45 @@ import java.util.List;
 public class BasePage {
 
     protected WebDriver driver;
+    protected WebDriverWait wait;
 
     public BasePage(WebDriver driver){
         this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(12));
     }
 
     public void load(String endPoint){
         driver.get("https://askomdch.com"+endPoint);
     }
 
+    // Usando espera implicit
     public void waitForOverlayToDisappear(By overlay){
         List<WebElement> overlays = driver.findElements(overlay);
         System.out.println("Iniciando Validador de Overlay y su tamaño es mayor a: " + overlays.size());
         if(overlays.size() > 0) {
-            new WebDriverWait(driver, Duration.ofSeconds(15)).until(
+            new WebDriverWait(driver, Duration.ofSeconds(10)).until(
                     ExpectedConditions.invisibilityOfAllElements(overlays)
             );
             System.out.println("El Overlay se pone invisible");
         } else {
             System.out.println("El Overlay no se encuentra");
         }
+    }
+
+    // Usando espera explicit
+    public void waitForOverlayToDisappear2(By overlay){
+        List<WebElement> overlays = driver.findElements(overlay);
+        System.out.println("Iniciando Validador de Overlay y su tamaño es mayor a: " + overlays.size());
+        if(overlays.size() > 0) {
+            wait.until(ExpectedConditions.invisibilityOfAllElements(overlays));
+            System.out.println("El Overlay se pone invisible");
+        } else {
+            System.out.println("El Overlay no se encuentra");
+        }
+    }
+
+    public WebElement getElement(By element){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
 }

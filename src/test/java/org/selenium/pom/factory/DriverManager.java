@@ -13,7 +13,7 @@ public class DriverManager {
         WebDriver driver=new ChromeDriver();
         //Maximize the browser
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // Usando Espera implicit
         return driver;
 
     }

@@ -45,14 +45,20 @@ public class CheckoutPage extends BasePage {
     }
 
     public CheckoutPage enterFirstName(String firstname){
-        driver.findElement(firstNameField).clear();
-        driver.findElement(firstNameField).sendKeys(firstname);
+        WebElement e = wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameField));
+        e.clear();
+        e.sendKeys(firstname);
+        // driver.findElement(firstNameField).clear();
+        // driver.findElement(firstNameField).sendKeys(firstname);
         return this;
     }
 
     public CheckoutPage enterLastName(String lastName){
-        driver.findElement(lastNameField).clear();
-        driver.findElement(lastNameField).sendKeys(lastName);
+        WebElement e = getElement(lastNameField);
+        e.clear();
+        e.sendKeys(lastName);
+        // driver.findElement(lastNameField).clear();
+        // driver.findElement(lastNameField).sendKeys(lastName);
         return this;
     }
 
@@ -125,6 +131,15 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
+
+   public CheckoutPage ClickPlaceOrder(Integer tiempo) throws InterruptedException{
+        Thread.sleep(tiempo);
+        driver.findElement(placeOrderButton).click() ;
+        Thread.sleep(tiempo);
+        return this;
+    }
+
+    // Usando espera Implicit en el overlay
     public CheckoutPage ClickPlaceOrder2(){
         // Thread.sleep(tiempo);
         List<WebElement> overlays = driver.findElements(overlay);
@@ -140,28 +155,25 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
+    // Usando espera Explicit en el overlay
     public CheckoutPage ClickPlaceOrder3(){
-        waitForOverlayToDisappear(overlay);
+        waitForOverlayToDisappear2(overlay);
         driver.findElement(placeOrderButton).click() ;
-        // Thread.sleep(tiempo);
-        return this;
-    }
-
-   public CheckoutPage ClickPlaceOrder(Integer tiempo) throws InterruptedException{
-        Thread.sleep(tiempo);
-        driver.findElement(placeOrderButton).click() ;
-        Thread.sleep(tiempo);
         return this;
     }
 
     public void getTitleCheckoutValid(String txtTitle, String txtSubTitle) {
-        driver.findElement(checkoutOrderTitle).getText();
-        driver.findElement(checkoutOrderText).getText();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(checkoutOrderTitle)).getText();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(checkoutOrderText)).getText();
+        // driver.findElement(checkoutOrderTitle).getText();
+        // driver.findElement(checkoutOrderText).getText();
         Assert.assertEquals(
-                driver.findElement(checkoutOrderTitle).getText(),txtTitle
+                // driver.findElement(checkoutOrderTitle).getText(),txtTitle
+                wait.until(ExpectedConditions.visibilityOfElementLocated(checkoutOrderTitle)).getText(), txtTitle
         );
         Assert.assertEquals(
-                driver.findElement(checkoutOrderText).getText(),txtSubTitle
+                // driver.findElement(checkoutOrderText).getText(),txtSubTitle
+                wait.until(ExpectedConditions.visibilityOfElementLocated(checkoutOrderText)).getText(), txtSubTitle
         );
 
     }
