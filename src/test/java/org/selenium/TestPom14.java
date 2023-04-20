@@ -12,13 +12,13 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TestPom13 extends BaseTest {
+public class TestPom14 extends BaseTest {
 
     @Test
     public void EndToEndTest() throws InterruptedException, IOException {
         String searchFor = "Blue";
         BillingAdress02 billingAdress02 = JacksonUtils.deserializeJson("MyData.json", BillingAdress02.class);
-        Product product = new Product(1206);
+        Product product = new Product(1208);
         User user = new User("test170296@gmail.com", "1nd1.sm4rt%%");
 
         HomePage homePage = new HomePage(driver).load();
@@ -42,13 +42,13 @@ public class TestPom13 extends BaseTest {
 
         // Login
         // checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
-        checkoutPage.login(user.getUsername(),user.getPassword(),1000);
+        // checkoutPage.login(user.getUsername(),user.getPassword(),1000);
 
         // Page Checkout
         checkoutPage.setBillingAdress02(billingAdress02)
                 .ClickPaymentMethod(2000)
                 //.ClickPlaceOrder(5000)
-                .ClickPlaceOrder2()
+                .ClickPlaceOrder3()
                 .getTitleCheckoutValid("Checkout", "Thank you. Your order has been received.");
     }
 

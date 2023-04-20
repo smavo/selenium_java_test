@@ -140,6 +140,13 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
+    public CheckoutPage ClickPlaceOrder3(){
+        waitForOverlayToDisappear(overlay);
+        driver.findElement(placeOrderButton).click() ;
+        // Thread.sleep(tiempo);
+        return this;
+    }
+
    public CheckoutPage ClickPlaceOrder(Integer tiempo) throws InterruptedException{
         Thread.sleep(tiempo);
         driver.findElement(placeOrderButton).click() ;
