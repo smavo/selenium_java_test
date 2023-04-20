@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.selenium.pom.base.BasePage;
 import org.selenium.pom.objects.BillingAdress;
@@ -37,8 +38,10 @@ public class CheckoutPage extends BasePage {
     private final By enterPasswordField = By.xpath("//p/span/input[@id='password']");
     private final By rememberClick = By.xpath("//input[contains(@id,'rememberme')]");
     private final By buttonLoginClick = By.xpath("//button[@name='login']");
-
     private final By overlay = By.cssSelector(".blockUI.blockOverlay");
+    private final By countryDropDown = By.id("billing_country");
+    private final By stateDropDown = By.id("billing_state");
+    private final By directBankTransferBtn = By.id("payment_method_bacs");
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -75,6 +78,12 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
+    public CheckoutPage selectCountry2(String countryName){
+        Select select = new Select(driver.findElement(countryDropDown));
+        select.selectByVisibleText(countryName);
+        return  this;
+    }
+
     public CheckoutPage enterAddress_1(String Address1){
         driver.findElement(address_1).clear();
         driver.findElement(address_1).sendKeys(Address1);
@@ -98,6 +107,12 @@ public class CheckoutPage extends BasePage {
         driver.findElement(stateSelector).click();
         driver.findElement(SelectState).click();
         return this;
+    }
+
+    public CheckoutPage selectState2(String stateName){
+        Select select = new Select(driver.findElement(stateDropDown));
+        select.selectByVisibleText(stateName);
+        return  this;
     }
 
     public CheckoutPage enterPostcodeField(String postcode){
@@ -131,6 +146,13 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
+    public CheckoutPage selectDirectBanKTransfer(){
+        WebElement e = wait.until(ExpectedConditions.elementToBeClickable(directBankTransferBtn));
+        if(!e.isSelected()){
+            e.click();
+        }
+        return this;
+    }
 
    public CheckoutPage ClickPlaceOrder(Integer tiempo) throws InterruptedException{
         Thread.sleep(tiempo);
@@ -233,9 +255,11 @@ public class CheckoutPage extends BasePage {
         return enterFirstName(billingAdress02.getFirstnamess())
                 .enterLastName(billingAdress02.getLastnamess())
                 .enterCompanyName(billingAdress02.getCompanyss())
+                .selectCountry2(billingAdress02.getCountry())
                 .enterAddress_1(billingAdress02.getAddres01ss())
                 .enterAddress_2(billingAdress02.getAddres02ss())
                 .clickCity(billingAdress02.getCityss())
+                .selectState2(billingAdress02.getState())
                 .enterPostcodeField(billingAdress02.getPostcodess())
                 .enterPhoneField(billingAdress02.getPhoness())
                 .enterEmailField(billingAdress02.getEmailss())

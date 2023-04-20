@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TestPom16 extends BaseTest {
+public class TestPom17 extends BaseTest {
 
     @Test
     public void EndToEndTest() throws InterruptedException, IOException {
@@ -46,12 +46,12 @@ public class TestPom16 extends BaseTest {
 
         // Login
         // checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
-        checkoutPage.login(user.getUsername(),user.getPassword(),1000);
+        // checkoutPage.login(user.getUsername(),user.getPassword(),1000);
 
         // Page Checkout
         checkoutPage.setBillingAdress02(billingAdress02)
-                .ClickPaymentMethod(2000)
-                //.ClickPlaceOrder(5000)
+                // .ClickPaymentMethod(2000)
+                .selectDirectBanKTransfer()
                 .ClickPlaceOrder3()
                 .getTitleCheckoutValid("Checkout", "Thank you. Your order has been received.");
     }

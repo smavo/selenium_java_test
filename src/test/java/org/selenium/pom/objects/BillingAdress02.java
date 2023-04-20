@@ -11,6 +11,8 @@ public class BillingAdress02 {
     private String phoness;
     private String emailss;
     private String commentsss;
+    private String country;
+    private String state;
 
     public String getFirstnamess() {
         return firstnamess;
@@ -100,6 +102,22 @@ public class BillingAdress02 {
     public BillingAdress02 setCommentsss(String commentss) {
         this.commentsss = commentss;
         return this;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
 }
