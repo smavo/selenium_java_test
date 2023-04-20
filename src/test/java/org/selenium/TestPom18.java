@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TestPom17 extends BaseTest {
+public class TestPom18 extends BaseTest {
 
     @Test
     public void EndToEndTest() throws InterruptedException, IOException {
@@ -40,13 +40,13 @@ public class TestPom17 extends BaseTest {
         cartPage.isLoaded();
 
         // Page Cart
-        cartPage.getTitleResult(product.getName(), 3000);
+        cartPage.getTitleResult2(product.getName());
         // CheckoutPage checkoutPage = cartPage.clickCheckoutButton(3000);
-        CheckoutPage checkoutPage = cartPage.clickCheckoutButton2();
+        CheckoutPage checkoutPage = cartPage.clickCheckoutButton3();
 
         // Login
         // checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
-        checkoutPage.login(user.getUsername(),user.getPassword(),1000);
+        // checkoutPage.login(user.getUsername(),user.getPassword(),1000);
 
         // Page Checkout
         checkoutPage.setBillingAdress02(billingAdress02)
