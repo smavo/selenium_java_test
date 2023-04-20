@@ -2,11 +2,17 @@ package org.selenium.pom.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.selenium.pom.base.BasePage;
 import org.selenium.pom.objects.BillingAdress;
 import org.selenium.pom.objects.BillingAdress01;
 import org.selenium.pom.objects.BillingAdress02;
 import org.testng.Assert;
+
+import java.time.Duration;
+import java.util.List;
 
 public class CheckoutPage extends BasePage {
 
@@ -32,19 +38,27 @@ public class CheckoutPage extends BasePage {
     private final By rememberClick = By.xpath("//input[contains(@id,'rememberme')]");
     private final By buttonLoginClick = By.xpath("//button[@name='login']");
 
+    private final By overlay = By.cssSelector(".blockUI.blockOverlay");
+
     public CheckoutPage(WebDriver driver) {
         super(driver);
     }
 
     public CheckoutPage enterFirstName(String firstname){
-        driver.findElement(firstNameField).clear();
-        driver.findElement(firstNameField).sendKeys(firstname);
+        WebElement e = wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameField));
+        e.clear();
+        e.sendKeys(firstname);
+        // driver.findElement(firstNameField).clear();
+        // driver.findElement(firstNameField).sendKeys(firstname);
         return this;
     }
 
     public CheckoutPage enterLastName(String lastName){
-        driver.findElement(lastNameField).clear();
-        driver.findElement(lastNameField).sendKeys(lastName);
+        WebElement e = getElement(lastNameField);
+        e.clear();
+        e.sendKeys(lastName);
+        // driver.findElement(lastNameField).clear();
+        // driver.findElement(lastNameField).sendKeys(lastName);
         return this;
     }
 
@@ -117,21 +131,49 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
-    public CheckoutPage ClickPlaceOrder(Integer tiempo) throws InterruptedException{
+
+   public CheckoutPage ClickPlaceOrder(Integer tiempo) throws InterruptedException{
         Thread.sleep(tiempo);
         driver.findElement(placeOrderButton).click() ;
         Thread.sleep(tiempo);
         return this;
     }
 
+    // Usando espera Implicit en el overlay
+    public CheckoutPage ClickPlaceOrder2(){
+        // Thread.sleep(tiempo);
+        List<WebElement> overlays = driver.findElements(overlay);
+        System.out.println("Iniciando Validador de Overlay y su tamaño es: " + overlays.size());
+        if(overlays.size() > 0){
+            new WebDriverWait(driver, Duration.ofSeconds(15)).until(
+                    ExpectedConditions.invisibilityOfAllElements(overlays)
+            );
+            System.out.println("El Overlay se pone invisible");
+        }
+        driver.findElement(placeOrderButton).click() ;
+        // Thread.sleep(tiempo);
+        return this;
+    }
+
+    // Usando espera Explicit en el overlay
+    public CheckoutPage ClickPlaceOrder3(){
+        waitForOverlayToDisappear2(overlay);
+        driver.findElement(placeOrderButton).click() ;
+        return this;
+    }
+
     public void getTitleCheckoutValid(String txtTitle, String txtSubTitle) {
-        driver.findElement(checkoutOrderTitle).getText();
-        driver.findElement(checkoutOrderText).getText();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(checkoutOrderTitle)).getText();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(checkoutOrderText)).getText();
+        // driver.findElement(checkoutOrderTitle).getText();
+        // driver.findElement(checkoutOrderText).getText();
         Assert.assertEquals(
-                driver.findElement(checkoutOrderTitle).getText(),txtTitle
+                // driver.findElement(checkoutOrderTitle).getText(),txtTitle
+                wait.until(ExpectedConditions.visibilityOfElementLocated(checkoutOrderTitle)).getText(), txtTitle
         );
         Assert.assertEquals(
-                driver.findElement(checkoutOrderText).getText(),txtSubTitle
+                // driver.findElement(checkoutOrderText).getText(),txtSubTitle
+                wait.until(ExpectedConditions.visibilityOfElementLocated(checkoutOrderText)).getText(), txtSubTitle
         );
 
     }
