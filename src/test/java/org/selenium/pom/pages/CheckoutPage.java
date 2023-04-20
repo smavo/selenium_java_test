@@ -2,11 +2,17 @@ package org.selenium.pom.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.selenium.pom.base.BasePage;
 import org.selenium.pom.objects.BillingAdress;
 import org.selenium.pom.objects.BillingAdress01;
 import org.selenium.pom.objects.BillingAdress02;
 import org.testng.Assert;
+
+import java.time.Duration;
+import java.util.List;
 
 public class CheckoutPage extends BasePage {
 
@@ -31,6 +37,8 @@ public class CheckoutPage extends BasePage {
     private final By enterPasswordField = By.xpath("//p/span/input[@id='password']");
     private final By rememberClick = By.xpath("//input[contains(@id,'rememberme')]");
     private final By buttonLoginClick = By.xpath("//button[@name='login']");
+
+    private final By overlay = By.cssSelector(".blockUI.blockOverlay");
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -117,7 +125,22 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
-    public CheckoutPage ClickPlaceOrder(Integer tiempo) throws InterruptedException{
+    public CheckoutPage ClickPlaceOrder2(){
+        // Thread.sleep(tiempo);
+        List<WebElement> overlays = driver.findElements(overlay);
+        System.out.println("Iniciando Validador de Overlay y su tamaño es: " + overlays.size());
+        if(overlays.size() > 0){
+            new WebDriverWait(driver, Duration.ofSeconds(15)).until(
+                    ExpectedConditions.invisibilityOfAllElements(overlays)
+            );
+            System.out.println("El Overlay se pone invisible");
+        }
+        driver.findElement(placeOrderButton).click() ;
+        // Thread.sleep(tiempo);
+        return this;
+    }
+
+   public CheckoutPage ClickPlaceOrder(Integer tiempo) throws InterruptedException{
         Thread.sleep(tiempo);
         driver.findElement(placeOrderButton).click() ;
         Thread.sleep(tiempo);
