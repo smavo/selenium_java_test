@@ -3,6 +3,7 @@ package org.selenium.pom.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
@@ -17,7 +18,9 @@ public class CartPage extends BasePage {
     private final By cartHeading = By.cssSelector(".has-text-align-center");
 
     @FindBy(css = "td[class='product-name'] a") private WebElement titleResults;
-    @FindBy(how = How.XPATH, using = "//a[contains(@class,'checkout-button button alt wc-forward')]") private WebElement checkoutButtons;
+    @FindBy(how = How.XPATH, using = "//a[contains(@class,'checkout-button button alt wc-forward')]") @CacheLookup private WebElement checkoutButtons;
+    // @CacheLookup --> Solo usarlo cuando se tienen cargar de data que no varía es decir que no es dinámica,
+    // ya que esta podría causar un fallo si se usa en pruebas donde la data es dinámica
 
     public CartPage(WebDriver driver){
         super(driver);
