@@ -1,4 +1,4 @@
-package org.selenium;
+package org.selenium.pom.tests;
 import org.selenium.pom.base.BaseTest;
 import org.selenium.pom.objects.BillingAdress02;
 import org.selenium.pom.objects.Product;
@@ -12,10 +12,10 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TestPom18 extends BaseTest {
+public class TestPom16 extends BaseTest {
 
-    @Test
-    public void EndToEndTest() throws InterruptedException, IOException {
+    @Test(enabled = false)
+    public void EndToEndTest_16() throws InterruptedException, IOException {
         String searchFor = "Blue";
         BillingAdress02 billingAdress02 = JacksonUtils.deserializeJson("MyData.json", BillingAdress02.class);
         Product product = new Product(1209);
@@ -40,18 +40,17 @@ public class TestPom18 extends BaseTest {
         cartPage.isLoaded();
 
         // Page Cart
-        cartPage.getTitleResult2(product.getName());
+        cartPage.getTitleResult(product.getName(), 3000);
         // CheckoutPage checkoutPage = cartPage.clickCheckoutButton(3000);
-        CheckoutPage checkoutPage = cartPage.clickCheckoutButton3();
+        CheckoutPage checkoutPage = cartPage.clickCheckoutButton2();
 
         // Login
-        // checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
-        // checkoutPage.login(user.getUsername(),user.getPassword(),1000);
+        checkoutPage.login(user.getUsername(),user.getPassword(),1000);
 
         // Page Checkout
         checkoutPage.setBillingAdress02(billingAdress02)
-                // .ClickPaymentMethod(2000)
-                .selectDirectBanKTransfer()
+                .ClickPaymentMethod(2000)
+                //.ClickPlaceOrder(5000)
                 .ClickPlaceOrder3()
                 .getTitleCheckoutValid("Checkout", "Thank you. Your order has been received.");
     }

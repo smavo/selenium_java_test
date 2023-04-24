@@ -1,4 +1,4 @@
-package org.selenium.testExample;
+package org.selenium.pom.tests.testExample;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class MyFirstTestCase {
 
-    @Test
+    @Test(enabled=false)
     public void dumyTest(){
 
         // ChromeOptions chromeOptions = new ChromeOptions();

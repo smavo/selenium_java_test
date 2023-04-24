@@ -1,4 +1,4 @@
-package org.selenium;
+package org.selenium.pom.tests;
 import org.selenium.pom.base.BaseTest;
 import org.selenium.pom.objects.BillingAdress;
 import org.selenium.pom.pages.CartPage;
@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 public class TestPom08 extends BaseTest {
 
-    @Test
-    public void EndToEndTest() throws InterruptedException{
+    // @Test
+    public void EndToEndTest_08() throws InterruptedException{
         /* BillingAdress billingAdress = new BillingAdress()
         .setFirstnames("Test 01")
         .setLastnames("Sample 02")

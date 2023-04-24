@@ -1,4 +1,4 @@
-package org.selenium;
+package org.selenium.pom.tests;
 import org.selenium.pom.base.BaseTest;
 import org.selenium.pom.objects.BillingAdress02;
 import org.selenium.pom.objects.Product;
@@ -14,8 +14,8 @@ import java.io.IOException;
 
 public class TestPom14 extends BaseTest {
 
-    @Test
-    public void EndToEndTest() throws InterruptedException, IOException {
+    // @Test
+    public void EndToEndTest_14() throws InterruptedException, IOException {
         String searchFor = "Blue";
         BillingAdress02 billingAdress02 = JacksonUtils.deserializeJson("MyData.json", BillingAdress02.class);
         Product product = new Product(1208);

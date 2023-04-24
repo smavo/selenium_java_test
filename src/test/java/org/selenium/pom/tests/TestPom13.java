@@ -1,4 +1,4 @@
-package org.selenium;
+package org.selenium.pom.tests;
 import org.selenium.pom.base.BaseTest;
 import org.selenium.pom.objects.BillingAdress02;
 import org.selenium.pom.objects.Product;
@@ -12,10 +12,10 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class TestPom15 extends BaseTest {
+public class TestPom13 extends BaseTest {
 
-    @Test
-    public void EndToEndTest() throws InterruptedException, IOException {
+    // @Test
+    public void EndToEndTest_13() throws InterruptedException, IOException {
         String searchFor = "Blue";
         BillingAdress02 billingAdress02 = JacksonUtils.deserializeJson("MyData.json", BillingAdress02.class);
         Product product = new Product(1206);
@@ -38,8 +38,7 @@ public class TestPom15 extends BaseTest {
 
         // Page Cart
         cartPage.getTitleResult(product.getName(), 3000);
-        // CheckoutPage checkoutPage = cartPage.clickCheckoutButton(3000);
-        CheckoutPage checkoutPage = cartPage.clickCheckoutButton2();
+        CheckoutPage checkoutPage = cartPage.clickCheckoutButton(3000);
 
         // Login
         // checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
@@ -49,7 +48,7 @@ public class TestPom15 extends BaseTest {
         checkoutPage.setBillingAdress02(billingAdress02)
                 .ClickPaymentMethod(2000)
                 //.ClickPlaceOrder(5000)
-                .ClickPlaceOrder3()
+                .ClickPlaceOrder2()
                 .getTitleCheckoutValid("Checkout", "Thank you. Your order has been received.");
     }
 

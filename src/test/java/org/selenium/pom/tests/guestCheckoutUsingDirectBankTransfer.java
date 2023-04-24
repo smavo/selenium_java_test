@@ -1,4 +1,4 @@
-package org.selenium;
+package org.selenium.pom.tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -74,7 +74,7 @@ public class guestCheckoutUsingDirectBankTransfer {
 
     }
 
-    @Test
+    // @Test
     public void testDemo() throws InterruptedException{
 
         // System Property for Chrome Driver

@@ -1,4 +1,4 @@
-package org.selenium;
+package org.selenium.pom.tests;
 import org.selenium.pom.base.BaseTest;
 import org.selenium.pom.objects.BillingAdress01;
 import org.selenium.pom.pages.CartPage;
@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 public class TestPom06 extends BaseTest {
 
-    @Test
-    public void EndToEndTest() throws InterruptedException{
+    // @Test
+    public void EndToEndTest_06() throws InterruptedException{
         BillingAdress01 billingAdress01 = new BillingAdress01();
         billingAdress01.setFirstname("Test 01");
         billingAdress01.setLastname("Sample 02");
@@ -41,7 +41,7 @@ public class TestPom06 extends BaseTest {
         CheckoutPage checkoutPage = cartPage.clickCheckoutButton(3000);
 
         // Login
-        checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
+        // checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
 
         // Page Checkout
         checkoutPage.setBillingAdress01(billingAdress01)

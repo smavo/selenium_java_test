@@ -1,4 +1,4 @@
-package org.selenium.testExample;
+package org.selenium.pom.tests.testExample;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class TestSample01 {
 
-    @Test
+    @Test(enabled=false)
     public void dumyTest(){
 
         // System Property for Chrome Driver

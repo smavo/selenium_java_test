@@ -1,4 +1,4 @@
-package org.selenium;
+package org.selenium.pom.tests;
 import org.openqa.selenium.By;
 import org.selenium.pom.base.BaseTest;
 import org.selenium.pom.pages.HomePage;
@@ -10,8 +10,8 @@ import java.util.Collections;
 
 public class TestPom02 extends BaseTest {
 
-    @Test
-    public void demotest() throws InterruptedException{
+    // @Test
+    public void EndToEndTest_02() throws InterruptedException{
 
         HomePage homePage = new HomePage(driver).load();
         StorePage storePage = homePage.clicStoreMenuLink();

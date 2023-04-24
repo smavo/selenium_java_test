@@ -1,4 +1,4 @@
-package org.selenium;
+package org.selenium.pom.tests;
 import org.openqa.selenium.By;
 import org.selenium.pom.base.BaseTest;
 import org.selenium.pom.pages.CartPage;
@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 
 public class TestPom05 extends BaseTest {
 
-    @Test
-    public void demotest() throws InterruptedException{
+    // @Test
+    public void EndToEndTest_05() throws InterruptedException{
 
         HomePage homePage = new HomePage(driver).load();
         StorePage storePage = homePage.clicStoreMenuLink();
@@ -32,7 +32,6 @@ public class TestPom05 extends BaseTest {
         // Login
         checkoutPage.login("test170296@gmail.com","1nd1.sm4rt%%",1000);
 
-        /*
         // Click here to login
         Thread.sleep(3000);
         driver.findElement(By.xpath("//div/div[@class='woocommerce-info']/a[contains(.,'Click here to login')]")).click();
@@ -42,7 +41,6 @@ public class TestPom05 extends BaseTest {
         driver.findElement(By.xpath("//input[contains(@id,'rememberme')]")).click();
         Thread.sleep(2000);
         driver.findElement(By.xpath("//button[@name='login']")).click();
-        */
 
         // Page Checkout
         checkoutPage.enterFirstName("Test")

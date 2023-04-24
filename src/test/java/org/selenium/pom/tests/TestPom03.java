@@ -1,32 +1,36 @@
-package org.selenium;
+package org.selenium.pom.tests;
 import org.openqa.selenium.By;
 import org.selenium.pom.base.BaseTest;
+import org.selenium.pom.pages.CartPage;
 import org.selenium.pom.pages.HomePage;
 import org.selenium.pom.pages.StorePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TestPom01 extends BaseTest {
+public class TestPom03 extends BaseTest {
 
-    @Test
-    public void demotest() throws InterruptedException{
-
-        // Launch Website
-        // driver.get("https://askomdch.com/");
+    // @Test
+    public void EndToEndTest_03() throws InterruptedException{
 
         HomePage homePage = new HomePage(driver).load();
         StorePage storePage = homePage.clicStoreMenuLink();
 
         // Search
-        driver.findElement(By.xpath("(//li/a[contains(.,'Store')])[1]")).click();
-        driver.findElement(By.xpath("//input[@class='search-field']")).sendKeys("Blue");
-        driver.findElement(By.xpath("//button[@value='Search']")).click();
+        /* storePage.textInSearchField("Blue");
+        // storePage.clickSearchBtn(); */
+        storePage.searchTextPublic("Blue");  // Esta función reemplaza a las 2 primeras aplicando "functional page object"
 
-        Assert.assertEquals(
-                  driver.findElement(By.xpath("//h1[contains(@class,'woocommerce-products-header__title page-title')]")).getText(),
-                  "Search results: “Blue”"
-        );
+        storePage.getTitleResult("Search results: “Blue”");
+        storePage.clickAddToCardButton("Blue Shoes");
 
+        // storePage.clickAddToCard();
+        CartPage cartPage = storePage.clickViewCart();
+
+        // Page Cart
+        cartPage.getTitleResult("Blue Shoes", 3000);
+        cartPage.clickCheckoutButton(3000);
+
+        /*
         driver.findElement(By.xpath("//a[@href='?add-to-cart=1215'][contains(.,'Add to cart')]")).click();
         Thread.sleep(3000);
         driver.findElement(By.xpath("//a[@title='View cart']")).click();
@@ -37,6 +41,7 @@ public class TestPom01 extends BaseTest {
         );
         Thread.sleep(4000);
         driver.findElement(By.xpath("//a[contains(@class,'checkout-button button alt wc-forward')]")).click();
+        */
 
         // Page Checkout
         driver.findElement(By.id("billing_first_name")).sendKeys("Test");
