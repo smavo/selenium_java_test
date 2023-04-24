@@ -3,11 +3,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
-public class guestCheckoutUsingDirectBankTransfer {
+public class TestPom00 {
 
-    @Test
+    @Test(priority = 2)
     public void Dummytest() throws InterruptedException{
 
         // System Property for Chrome Driver
@@ -74,7 +75,7 @@ public class guestCheckoutUsingDirectBankTransfer {
 
     }
 
-    // @Test
+    @Ignore
     public void testDemo() throws InterruptedException{
 
         // System Property for Chrome Driver

@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class TestPom17 extends BaseTest {
 
-    @Test(enabled=false)
+    @Test
     public void EndToEndTest_17() throws InterruptedException, IOException {
         String searchFor = "Blue";
         BillingAdress02 billingAdress02 = JacksonUtils.deserializeJson("MyData.json", BillingAdress02.class);
@@ -45,7 +45,7 @@ public class TestPom17 extends BaseTest {
         CheckoutPage checkoutPage = cartPage.clickCheckoutButton2();
 
         // Login
-        checkoutPage.login(user.getUsername(),user.getPassword(),1000);
+        // checkoutPage.login(user.getUsername(),user.getPassword(),1000);
 
         // Page Checkout
         checkoutPage.setBillingAdress02(billingAdress02)
