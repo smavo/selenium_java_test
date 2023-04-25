@@ -42,3 +42,9 @@ mvn clean test
 mvn clean test -Dbrowser=Chrome
 mvn clean test -Dbrowser=Firefox
 mvn clean test -Dbrowser=Edge
+
+
+### Ejecutar test pasando nombre de Navegador por maven (Constantes)
+mvn clean test -Dbrowser=CHROME
+mvn clean test -Dbrowser=FIREFOX
+mvn clean test -Dbrowser=EDGE

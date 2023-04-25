@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.selenium.pom.constants.DriverType;
 
 import java.time.Duration;
 
@@ -27,16 +28,17 @@ public class DriverManager {
 
         WebDriver driver;
         String Browser = System.getProperty("browser");
-        switch (Browser){
-            case "Chrome" -> {
+        switch (DriverType.valueOf(Browser)){
+            case CHROME -> {
+            // case "Chrome" -> {
                 WebDriverManager.chromedriver().cachePath("Drivers").setup();
                 driver = new ChromeDriver();
             }
-            case "Firefox" -> {
+            case FIREFOX -> {
                 WebDriverManager.firefoxdriver().cachePath("Drivers").setup();
                 driver = new FirefoxDriver();
             }
-            case "Edge" -> {
+            case EDGE -> {
                 WebDriverManager.edgedriver().cachePath("Drivers").setup();
                 driver = new EdgeDriver();
             }
