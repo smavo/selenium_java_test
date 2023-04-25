@@ -2,20 +2,24 @@ package org.selenium.pom.tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class TestPom00 {
 
-    @Test(priority = 2)
+    @Test(enabled = false)
     public void Dummytest() throws InterruptedException{
 
         // System Property for Chrome Driver
         // System.setProperty("webdriver.chrome.driver","D:\\Drivers\\chromedriver_112.0.5615.49.exe");
 
-        // Instantiate a ChromeDriver class.
-        WebDriver driver=new ChromeDriver();
+        // Instantiate a Driver (Firefox,Chrome,Edge)
+        // WebDriver driver=new ChromeDriver();
+        // WebDriver driver=new FirefoxDriver();
+        WebDriver driver=new EdgeDriver();
 
         // Launch Website
         driver.get("https://askomdch.com/");

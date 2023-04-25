@@ -3,20 +3,53 @@ package org.selenium.pom.factory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
 
 public class DriverManager {
 
+    // Utilizando WebDriverManager
     public WebDriver initializeDriver(){
-        WebDriverManager.chromedriver().cachePath("Drivers").setup();
-        WebDriver driver=new ChromeDriver();
+        // Google
+        /* WebDriverManager.chromedriver().cachePath("Drivers").setup();
+        WebDriver driver = new ChromeDriver(); */
+
+        // Firefox
+        /* WebDriverManager.firefoxdriver().cachePath("Drivers").setup();
+        WebDriver driver = new FirefoxDriver(); */
+
+        // Edge
+        /* WebDriverManager.edgedriver().cachePath("Drivers").setup();
+        WebDriver driver = new EdgeDriver(); */
+
+
+        WebDriver driver;
+        String Browser = System.getProperty("browser");
+        switch (Browser){
+            case "Chrome" -> {
+                WebDriverManager.chromedriver().cachePath("Drivers").setup();
+                driver = new ChromeDriver();
+            }
+            case "Firefox" -> {
+                WebDriverManager.firefoxdriver().cachePath("Drivers").setup();
+                driver = new FirefoxDriver();
+            }
+            case "Edge" -> {
+                WebDriverManager.edgedriver().cachePath("Drivers").setup();
+                driver = new EdgeDriver();
+            }
+            default -> throw new IllegalMonitorStateException("Invalid browser name:" + Browser);
+        }
+
         driver.manage().window().maximize();
         // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // Usando Espera implicit
         return driver;
 
     }
 
+    // Utilizando WebDriver
     public WebDriver initializeDriver2(){
 
         // Instantiate a ChromeDriver class.

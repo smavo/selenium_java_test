@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class TestPom16 extends BaseTest {
 
-    @Test(enabled = false)
+    @Test(priority = 2)
     public void EndToEndTest_16() throws InterruptedException, IOException {
         String searchFor = "Blue";
         BillingAdress02 billingAdress02 = JacksonUtils.deserializeJson("MyData.json", BillingAdress02.class);

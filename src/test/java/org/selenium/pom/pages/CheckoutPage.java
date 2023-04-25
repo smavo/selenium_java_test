@@ -79,7 +79,8 @@ public class CheckoutPage extends BasePage {
     }
 
     public CheckoutPage selectCountry2(String countryName){
-        Select select = new Select(driver.findElement(countryDropDown));
+        // Select select = new Select(driver.findElement(countryDropDown));
+        Select select = new Select(wait.until(ExpectedConditions.visibilityOfElementLocated(countryDropDown)));
         select.selectByVisibleText(countryName);
         return  this;
     }
@@ -110,7 +111,8 @@ public class CheckoutPage extends BasePage {
     }
 
     public CheckoutPage selectState2(String stateName){
-        Select select = new Select(driver.findElement(stateDropDown));
+        // Select select = new Select(driver.findElement(stateDropDown));
+        Select select = new Select(wait.until(ExpectedConditions.visibilityOfElementLocated(stateDropDown)));
         select.selectByVisibleText(stateName);
         return  this;
     }
