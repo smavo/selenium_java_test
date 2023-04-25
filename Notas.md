@@ -48,3 +48,9 @@ mvn clean test -Dbrowser=Edge
 mvn clean test -Dbrowser=CHROME
 mvn clean test -Dbrowser=FIREFOX
 mvn clean test -Dbrowser=EDGE
+
+
+### Configurar Run/Debug Configuration Templates
+* Run / Edit Configurations ...
+* Edit Configurations Template
+* -ea -Dbrowser=EDGE
