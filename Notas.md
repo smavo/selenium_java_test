@@ -80,4 +80,10 @@ mvn clean test -Dsufire.suiteXmlFiles=testng.xml
 mvn clean test -Dsufire.suiteXmlFiles=testng_1.xml,testng_2.xml
 ```
 
-
+* Ejecutar pruebas pasando parámetros a la ejecución del testng
+```
+mvn clean test -DsuiteFile=testng.xml
+mvn clean test -DsuiteFile=testng_0.xml
+mvn clean test -DsuiteFile=testng_1.xml
+mvn clean test -DsuiteFile=testng_0.xml,testng_1.xml
+```

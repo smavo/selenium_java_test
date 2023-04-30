@@ -2,39 +2,21 @@
 
 <suite name="Test-Master-Selenium" verbose="1">
 
-    <test name="TesSuite">
-
-        <!-- Para ejecutar una suite completa especificada en ruta -->
-        <!-- <packages>
-            <package name="org.selenium.pom.tests" />
-        </packages>-->
+    <test name="Regression1">
 
         <!-- Agregando navegador por parámetro -->
         <parameter name="browser" value="CHROME"/>
 
+        <packages>
+            <package name="org.selenium.pom.tests" />
+        </packages>
+
         <!-- Para ejecutar clases de prueba en específico-->
-        <classes>
+        <!-- <classes>
             <class name="org.selenium.pom.tests.TestPom18"/>
             <class name="org.selenium.pom.tests.TestPom17"/>
-        </classes>
+        </classes> -->
 
     </test>
-
-    <!-- Correr pruebas en Chrome -->
-    <!-- <test name="CHROME">
-        <parameter name="browser" value="CHROME"/>
-        <classes>
-            <class name="org.selenium.pom.tests.TestPom17"/>
-            <class name="org.selenium.pom.tests.TestPom18"/>
-        </classes>
-    </test> -->
-
-    <!-- Correr pruebas en Edge -->
-    <!-- <test name="EDGE">
-        <parameter name="browser" value="EDGE"/>
-        <classes>
-            <class name="org.selenium.pom.tests.TestPom16"/>
-        </classes>
-    </test> -->
 
 </suite>
