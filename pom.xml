@@ -24,9 +24,9 @@
         <version>3.0.0</version>
         <configuration>
           <suiteXmlFiles>
-            <!--<suiteXmlFile>testng.xml</suiteXmlFile>-->
-            <suiteXmlFile>testng_1.xml</suiteXmlFile>
-            <suiteXmlFile>testng_2.xml</suiteXmlFile>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
+            <!-- <suiteXmlFile>testng_1.xml</suiteXmlFile>
+            <suiteXmlFile>testng_2.xml</suiteXmlFile> -->
           </suiteXmlFiles>
         </configuration>
       </plugin>

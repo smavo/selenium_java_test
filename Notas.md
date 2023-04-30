@@ -64,7 +64,20 @@ Ver la sección anterior para retirar el argumento JVM de la plantilla de ejecuc
 
 ### Ejecutando test usando TestNG por linea de comandos
 * Ir a la ruta https://maven.apache.org/surefire/maven-surefire-plugin/examples/testng.html y copiar el ejemplo en TestNG
-* Ejecutar el comando:
+* Ejecutar el comando: Tomará por defecto la configuración del testng.xml configurado en el pom.xml
 ```
 mvn clean test 
 ```
+
+* No necesariamente tienen que estar configurados en el pom.xml, ya que al ejecutarlo por consola
+tomara los parámetros que indicamos por consola.
+* Ejecutar por consola una configuración testng en específico:
+```
+mvn clean test -Dsufire.suiteXmlFiles=testng.xml
+```
+* Ejecutar por consola una configuración testng en específico + de 1 xml:
+```
+mvn clean test -Dsufire.suiteXmlFiles=testng_1.xml,testng_2.xml
+```
+
+

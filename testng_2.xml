@@ -9,7 +9,7 @@
 
         <!-- Para ejecutar clases de prueba en específico-->
         <classes>
-            <class name="org.selenium.pom.tests.TestPom18"/>
+            <class name="org.selenium.pom.tests.TestPom17"/>
         </classes>
 
     </test>
