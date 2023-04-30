@@ -7,6 +7,9 @@
             <package name="org.selenium.pom.tests" />
         </packages>-->
 
+        <!-- Agregando navegador por parámetro -->
+        <parameter name="browser" value="EDGE"/>
+
         <!-- Para ejecutar clases de prueba en específico-->
         <classes>
             <class name="org.selenium.pom.tests.TestPom17"/>

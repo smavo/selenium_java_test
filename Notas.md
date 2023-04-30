@@ -54,3 +54,10 @@ mvn clean test -Dbrowser=EDGE
 * Run / Edit Configurations ...
 * Edit Configurations Template
 * -ea -Dbrowser=EDGE
+
+
+### Usar navegador por parámetros con TestNG
+Para usar el navegador dentro de un parámetro y usar tesNG 
+debemos de quitar el argumento JVM de la plantilla de 
+configuración y dejarlo por defecto como antes. 
+Ver la sección anterior para retirar el argumento JVM de la plantilla de ejecución.

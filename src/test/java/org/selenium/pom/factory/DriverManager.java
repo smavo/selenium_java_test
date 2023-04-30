@@ -12,7 +12,8 @@ import java.time.Duration;
 public class DriverManager {
 
     // Utilizando WebDriverManager
-    public WebDriver initializeDriver(){
+    public WebDriver initializeDriver(String browser){
+
         // Google
         /* WebDriverManager.chromedriver().cachePath("Drivers").setup();
         WebDriver driver = new ChromeDriver(); */
@@ -27,8 +28,8 @@ public class DriverManager {
 
 
         WebDriver driver;
-        String Browser = System.getProperty("browser", "CHROME");
-        switch (DriverType.valueOf(Browser)){
+        browser = System.getProperty("browser", browser);
+        switch (DriverType.valueOf(browser)){
             case CHROME -> {
             // case "Chrome" -> {
                 WebDriverManager.chromedriver().cachePath("Drivers").setup();
@@ -42,7 +43,7 @@ public class DriverManager {
                 WebDriverManager.edgedriver().cachePath("Drivers").setup();
                 driver = new EdgeDriver();
             }
-            default -> throw new IllegalMonitorStateException("Invalid browser name:" + Browser);
+            default -> throw new IllegalMonitorStateException("Invalid browser name:" + browser);
         }
 
         driver.manage().window().maximize();
