@@ -45,7 +45,7 @@ public class TestPom16 extends BaseTest {
         CheckoutPage checkoutPage = cartPage.clickCheckoutButton2();
 
         // Login
-        checkoutPage.login(user.getUsername(),user.getPassword(),1000);
+        // checkoutPage.login(user.getUsername(),user.getPassword(),1000);
 
         // Page Checkout
         checkoutPage.setBillingAdress02(billingAdress02)
