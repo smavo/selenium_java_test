@@ -61,3 +61,10 @@ Para usar el navegador dentro de un parámetro y usar tesNG
 debemos de quitar el argumento JVM de la plantilla de 
 configuración y dejarlo por defecto como antes. 
 Ver la sección anterior para retirar el argumento JVM de la plantilla de ejecución.
+
+### Ejecutando test usando TestNG por linea de comandos
+* Ir a la ruta https://maven.apache.org/surefire/maven-surefire-plugin/examples/testng.html y copiar el ejemplo en TestNG
+* Ejecutar el comando:
+```
+mvn clean test 
+```

@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Test-Master-Selenium" verbose="1">
+
+    <test name="TesSuite">
+
+        <!-- Agregando navegador por parámetro -->
+        <parameter name="browser" value="EDGE"/>
+
+        <!-- Para ejecutar clases de prueba en específico-->
+        <classes>
+            <class name="org.selenium.pom.tests.TestPom18"/>
+        </classes>
+
+    </test>
+
+</suite>
